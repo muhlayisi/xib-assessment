@@ -1,5 +1,6 @@
 package com.xib.assessment.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,15 @@ class AgentServiceImpl implements AgentService{
 	@Override
 	public Optional<Agent> findAgent(Long id) {
 		return agentRepository.findById(id);
+	}
+
+	@Override
+	public List<Agent> findAllAgents() {
+		return agentRepository.findAll();
+	}
+
+	@Override
+	public Agent saveAgent(Agent agent) {
+		return agentRepository.save(agent);
 	}
 }

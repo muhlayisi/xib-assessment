@@ -11,29 +11,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.xib.assessment.model.Agent;
 import com.xib.assessment.model.Team;
-import com.xib.assessment.service.AgentService;
+import com.xib.assessment.service.TeamService;
 
 @RestController
 @RequestMapping(value="/api", produces="application/json")
-public class AgentController {
+public class TeamController {
 	
 	@Autowired
-	private AgentService agentService;
+	private TeamService teamService;
 
-    @GetMapping("/agent/{id}")
-    public ResponseEntity<Agent> findAgent(@PathVariable("id") Long id) {
-    	return ResponseEntity.ok(agentService.findAgent(id).orElse(new Agent()));
+    @GetMapping("/team/{id}")
+    public ResponseEntity<Team> findTeam(@PathVariable("id") Long id) {
+    	return ResponseEntity.ok(teamService.findTeam(id).orElse(new Team()));
     }
     
-    @GetMapping("/agents")
-    public ResponseEntity<List<Agent>> findAllAgents() {
-    	return ResponseEntity.ok(agentService.findAllAgents());
+    @GetMapping("/teams")
+    public ResponseEntity<List<Team>> findAllTeams() {
+    	return ResponseEntity.ok(teamService.findAllTeams());
     }
     
-    @PostMapping("/agent")
-    public ResponseEntity<Agent> saveAgent(@RequestBody Agent agent) {
-    	return ResponseEntity.ok(agentService.saveAgent(agent));
+    @PostMapping("/team")
+    public ResponseEntity<Team> saveTeam(@RequestBody Team team) {
+    	return ResponseEntity.ok(teamService.saveTeam(team));
     }
 }
