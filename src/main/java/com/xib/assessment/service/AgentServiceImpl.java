@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.xib.assessment.model.Agent;
+import com.xib.assessment.model.Team;
 import com.xib.assessment.repository.AgentRepository;
 
 @Service
@@ -27,6 +28,17 @@ class AgentServiceImpl implements AgentService{
 
 	@Override
 	public Agent saveAgent(Agent agent) {
+		return agentRepository.save(agent);
+	}
+	
+	@Override
+	public Agent assignAgent(Long id, Team team) {
+		Optional<Agent> agentObject = agentRepository.findById(id);
+		
+		Agent agent = agentObject.orElse(null);
+		
+		agent.setTeam(team);
+		
 		return agentRepository.save(agent);
 	}
 }

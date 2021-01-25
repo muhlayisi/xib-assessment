@@ -9,4 +9,5 @@ public interface TeamService {
 	Optional<Team> findTeam(Long id);
 	List<Team> findAllTeams();
 	Team saveTeam(Team team);
+	List<Team> findEmptyTeams();
 }

@@ -29,4 +29,9 @@ class TeamServiceImpl implements TeamService{
 	public Team saveTeam(Team team) {
 		return teamRepository.save(team);
 	}
+
+	@Override
+	public List<Team> findEmptyTeams() {
+		return teamRepository.findEmptyTeams();
+	}
 }

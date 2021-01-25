@@ -35,4 +35,10 @@ public class TeamController {
     public ResponseEntity<Team> saveTeam(@RequestBody Team team) {
     	return ResponseEntity.ok(teamService.saveTeam(team));
     }
+    
+    @GetMapping("/teams/empty")
+    public ResponseEntity<List<Team>> findEmptyTeams() {
+    	return ResponseEntity.ok(teamService.findEmptyTeams());
+    }
+    
 }

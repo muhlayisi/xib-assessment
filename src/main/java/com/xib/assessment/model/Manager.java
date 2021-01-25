@@ -1,13 +1,16 @@
 package com.xib.assessment.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 
-@Entity(name = "agent")
-public class Agent{
+@Entity
+public class Manager{
 	
 	@Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -15,8 +18,9 @@ public class Agent{
     private String firstName;
     private String lastName;
     private String idNumber;
-    @ManyToOne
-    private Team team;
+    
+    @ManyToMany
+    private Set<Team> teams = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -42,19 +46,19 @@ public class Agent{
         this.lastName = lastName;
     }
 
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
-
-    public String getIdNumber() {
+	public String getIdNumber() {
         return idNumber;
     }
 
     public void setIdNumber(String idNumber) {
         this.idNumber = idNumber;
     }
+    
+    public Set<Team> getTeams() {
+		return teams;
+	}
+
+	public void setTeams(Set<Team> teams) {
+		this.teams = teams;
+	}
 }
