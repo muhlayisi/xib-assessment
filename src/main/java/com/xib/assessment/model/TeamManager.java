@@ -11,6 +11,7 @@ import lombok.Data;
 @Data
 @Entity(name = "team_manager")
 public class TeamManager{
+	
 	@Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
